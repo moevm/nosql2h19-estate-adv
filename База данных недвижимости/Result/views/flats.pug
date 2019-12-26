@@ -1,0 +1,39 @@
+html
+	head
+		meta(charset="utf-8")
+
+		title Доступные квартиры
+		
+	body
+		if flats.length == 0
+			p По вашему запросу ничего не найдено
+		else
+			table
+				tbody
+					tr
+						td
+							//Хаты
+							table
+								tbody(id="flats")
+									for flat in flats
+										tr
+											td
+												p Комнат: #{flat[0]}
+												p Метраж: #{flat[1]}
+												p Цена: #{flat[2]}
+												p Краткое описание: #{flat[3]}
+												p Владелец: #{flat[4]}
+												p Телефон: #{flat[5]}
+												p Метро: #{flat[6]}
+												a(href=`/public/images/${flat[7]}`)
+													img(src=`/public/images/${flat[7]}` width="300")
+												hr
+						
+		table
+			tbody
+				tr
+					td
+						a(href="/") На главную
+				tr
+					td
+						a(href="/buy") Вернуться к поиску

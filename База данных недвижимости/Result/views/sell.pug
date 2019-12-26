@@ -1,0 +1,52 @@
+html
+	head
+		meta(charset="utf-8")
+
+		title Подача заявки
+	body
+
+		div(align="center")
+			a(href="/buy")
+				button(style="font-weight:bold") Купить
+			h1 / Продать квартиру
+
+		form(action="/addSell" enctype="multipart/form-data" method="post")
+			table
+				tbody
+					tr
+						td Как с вами связаться
+					tr
+						td 
+							input(name="name" type="text" placeholder="ФИО" required)
+					tr
+						td 
+							input(name="phone" type="text" placeholder="Номер телефона" required)
+					tr
+						td Опишите вашу квартиру
+					tr
+						td 
+							input(name="rooms" type="number" placeholder="Кол-во комнат" min="1" required)
+					tr
+						td 
+							input(name="price" type="number" placeholder="Оценочная стоимость" min="1" required)
+					tr
+						td 
+							input(name="footage" type="number" placeholder="Метраж" min="1" required)
+					tr
+						td
+							select(name="metro")
+								for station in stations
+									option(option=station) #{station}
+					tr
+						td
+							textarea(name="description" placeholder="Краткое описание" required)
+					tr
+						td 
+							p Загрузите фото
+							input(type="file" name="picture" accept="image/*" value="Загрузите изображение" required)
+					tr
+						td
+							input(type="submit" value="Оставить заявку")
+			
+		p(style="color: red") Все поля обязательно должны быть заполнены
+		a(href="/") На главную

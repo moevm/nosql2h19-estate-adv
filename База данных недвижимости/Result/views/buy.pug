@@ -1,0 +1,66 @@
+html
+	head
+		meta(charset="utf-8")
+
+		title Buy
+		
+		script(src="/public/scripts/jquery.js")
+		script(src="/public/scripts/buy.js")
+	body
+
+		h1(align="center") Купить /
+			a(href="/sell")
+				button(style="font-weight:bold") Продать
+		h1(align="center") квартиру
+
+		form(action="/getBuy" method="post")
+			table
+				tbody
+					tr
+						td(colspan="4") Количество комнат
+					tr
+						td
+							input(id="r1" type="checkbox" name="r1")
+							label(for="r1") 1
+						td
+							input(id="r2" type="checkbox" name="r2")
+							label(for="r2") 2
+						td
+							input(id="r3" type="checkbox" name="r3")
+							label(for="r3") 3
+							
+						td
+							input(id="r4" type="checkbox" name="r4")
+							label(for="r2") 4+
+							
+							
+					tr
+						td(colspan="2")
+							input(id="minPrice" name="minPrice" type="number" placeholder="Цена от" onchange="minPriceChanged()" min="0" required)
+						td(colspan="2")
+							input(id="maxPrice" name="maxPrice" type="number" placeholder="Цена до" onchange="maxPriceChanged()" required)
+					
+					tr
+						td(colspan="2")
+							input(id="minFootage" name="minFootage" type="number" placeholder="Метраж от" onchange="minFootageChanged()" min="0" required)
+						td(colspan="2")
+							input(id="maxFootage" name="maxFootage" type="number" placeholder="Метраж до" onchange="maxFootageChanged()" required)
+							
+					tr
+						td(colspan="4")
+							select(name="metro")
+								for station in stations
+									option(value=station[0]) #{station[0]}
+								option(value="_notExisteableStation_") Любая
+								
+					tr
+						td(colspan="4")
+							input(type="submit" value="Найти")
+
+		p 
+		form(action="/getBuy" method="post")
+			input(type="submit" name="all" value="Просмотреть все предложения")
+							
+
+
+		a(href="/") На главную
